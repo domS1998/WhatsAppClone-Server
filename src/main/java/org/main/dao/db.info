@@ -1,0 +1,43 @@
+create table users (
+
+	username varchar (20) primary key,
+	password varchar (50) not null,
+	tel varchar (20)
+);
+
+create table chat (
+
+    user1 varchar (20) reference0s users on delete cascade,
+    user2 varchar (20) references users on delete cascade,
+    primary key (user1, user2)
+
+);
+
+create table message (
+
+	id varchar (50) primary key,
+	content text,
+	time timestamp not null,
+	sender varchar (20) references users on delete cascade,
+	receiver varchar (20) references users on delete cascade,
+	read boolean not null
+);
+
+
+
+    -- Anzahl der DB Verbindungen
+    select count(*) from pg_stat_activity;
+
+
+
+    alter table message
+    alter column id type varchar (50);
+
+    -- We are dropping the foreign key constraint on dependant table (in other case it will prevent us from updating the values)
+    ALTER TABLE foo_table DROP CONSTRAINT fk_e52ffdeea76ed395;
+
+    -- Then, we're swapping values in foreign key column from id to another_id
+    UPDATE foo_table T SET user_id = (SELECT another_id FROM users WHERE id = T.user_id);
+
+    -- And finally we're creating new foreign key constraint pointing to the another_id instead of id
+    ALTER TABLE foo_table ADD CONSTRAINT fk_e52ffdeea76ed395 FOREIGN KEY (user_id) REFERENCES users (another_id) ON DELETE CASCADE;

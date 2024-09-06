@@ -1,0 +1,19 @@
+package org.main.net.api.transaction.messages;
+
+public enum MessageType {
+    LOGIN,
+    LOGIN_RESPONSE,
+    SEND_MESSAGE,
+    NEW_MESSAGE_FROM_SERVER,
+    LOAD_USER,
+    LOAD_USER_RESPONSE,
+    TRANSACTION_COMPLETE,
+    TRANSACTION_FAIL,
+    CONNECT_LISTENER,
+    CREATE_CHAT,
+    UPDATE_MESSAGE,
+    IS_CONNECTED_REQUEST,
+
+    DEFAULT
+}
+
