@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#mvn clean
 #mvn compile
 #mvn package # compile and build jar
 docker compose rm -stop

@@ -62,7 +62,9 @@ public class UserDAO{
 
         Session session = Database.getInstance().getSession();
 
-        session.beginTransaction();
+        if ( ! session.getTransaction().isActive()) {
+            session.beginTransaction();
+        }
 
         // prüfen, ob benutzer mit dem username in db existiert
 

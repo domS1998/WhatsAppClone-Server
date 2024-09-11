@@ -12,8 +12,11 @@ services:
       POSTGRES_USER: ubuntu
       POSTGRES_PASSWORD: ubuntu
       POSTGRES_DB: messengerapp
+    # neues, leeres Volume erstellen, in dem der Inhalt
+    # des Container-VZs "/var/lib/postgres/data" auf dem Hostgerät gespeichert wird.
     volumes:
       - data:/var/lib/postgresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
 
   webservice-1.0:
     image: webservice-1.0
@@ -24,3 +27,4 @@ services:
 
 volumes:
   data: {}
+
